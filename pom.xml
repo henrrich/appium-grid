@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2010-2015 Lazery Attack - http://www.lazeryattack.com ~ http://www.lazerycode.com
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.unibet.automation</groupId>
+    <artifactId>unitard-qa-grid</artifactId>
+    <version>1.0.0.1-SNAPSHOT</version>
+
+    <name>Unitard QA grid</name>
+    <description>A grid for Unibet internal Selenium/Appium device lab</description>
+
+    <properties>
+        <selenium_grid_version>1.0.5</selenium_grid_version>
+        <selenium_server>2.53.0</selenium_server>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>m2-internal-official</id>
+            <name>m2-internal-official</name>
+            <url>${releases.repository.url}</url>
+            <layout>default</layout>
+        </repository>
+        <snapshotRepository>
+            <id>m2-internal-devel</id>
+            <name>m2-internal-devel</name>
+            <url>${snapshots.repository.url}</url>
+            <layout>default</layout>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server-standalone -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server-standalone</artifactId>
+            <version>${selenium_server}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium.grid/selenium-grid-hub -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium.grid</groupId>
+            <artifactId>selenium-grid-hub</artifactId>
+            <version>${selenium_grid_version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium.grid/selenium-grid-tools -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium.grid</groupId>
+            <artifactId>selenium-grid-tools</artifactId>
+            <version>${selenium_grid_version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.openqa.grid.selenium.GridLauncher</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-jar-with-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
