@@ -21,51 +21,38 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.unibet.automation</groupId>
-    <artifactId>unitard-qa-grid</artifactId>
-    <version>1.0.0.1-SNAPSHOT</version>
+    <groupId>se.henrrich.appium</groupId>
+    <artifactId>appium-grid</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
 
-    <name>Unitard QA grid</name>
-    <description>A grid for Unibet internal Selenium/Appium device lab</description>
+    <name>Appium grid</name>
+    <description>A grid for Appium device lab</description>
 
     <properties>
         <selenium_grid_version>1.0.5</selenium_grid_version>
-        <selenium_server>2.53.0</selenium_server>
+        <selenium_server>3.5.2</selenium_server>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>m2-internal-official</id>
-            <name>m2-internal-official</name>
-            <url>${releases.repository.url}</url>
-            <layout>default</layout>
-        </repository>
-        <snapshotRepository>
-            <id>m2-internal-devel</id>
-            <name>m2-internal-devel</name>
-            <url>${snapshots.repository.url}</url>
-            <layout>default</layout>
-        </snapshotRepository>
-    </distributionManagement>
-
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-server-standalone -->
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-server-standalone</artifactId>
-            <version>${selenium_server}</version>
+            <groupId>org.seleniumhq.selenium.grid</groupId>
+            <artifactId>selenium-grid-core</artifactId>
+            <version>${selenium_grid_version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium.grid/selenium-grid-hub -->
         <dependency>
             <groupId>org.seleniumhq.selenium.grid</groupId>
             <artifactId>selenium-grid-hub</artifactId>
             <version>${selenium_grid_version}</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium.grid/selenium-grid-tools -->
         <dependency>
             <groupId>org.seleniumhq.selenium.grid</groupId>
             <artifactId>selenium-grid-tools</artifactId>
             <version>${selenium_grid_version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-server</artifactId>
+            <version>${selenium_server}</version>
         </dependency>
     </dependencies>
 

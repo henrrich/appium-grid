@@ -1,4 +1,4 @@
-package com.unibet.automation.grid;
+package se.henrrich.appium.grid;
 
 import org.openqa.grid.internal.utils.DefaultCapabilityMatcher;
 
@@ -6,11 +6,11 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 /**
- * Created by viodia on 26/01/2016.
+ * Created by henrrich on 26/01/2016.
  */
-public class UnitardCapabilityMatcher extends DefaultCapabilityMatcher {
+public class AppiumCapabilityMatcher extends DefaultCapabilityMatcher {
 
-    private static final Logger logger = Logger.getLogger(UnitardCapabilityMatcher.class.getName());
+    private static final Logger logger = Logger.getLogger(AppiumCapabilityMatcher.class.getName());
 
     private final static String CAP_PLATFORM_VERSION = "platformVersion";
     private final static String CAP_PLATFORM_NAME = "platformName";
